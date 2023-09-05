@@ -6,10 +6,10 @@ import Info from './Info'
 import Response from './Response'
 
 // import { Footer } from 'antd/es/layout/layout'
-import Footer from './Footer'
+
 import TestiMonials from './Testimonial'
 
-=======
+
 import Footer from './Footer'
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
 
        <TestiMonials />
 
-        <Response />
+       
 
         <Footer />
     </div>
