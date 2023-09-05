@@ -18,7 +18,7 @@ const Items = () => {
             </div>
             <div className='products flex flex-wrap justify-center items-center w-[80%] smm:w-full'>
                 <div className='pdt-card m-6 w-72 shadow-xl py-4 px-2 flex flex-col justify-center items-center space-y-4 bg-yellow-50 rounded-md hover:scale-110 hover:bg-gray-200 duration-200 ease-in-out cursor-pointer'>
-                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-4 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
+                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-6 h-8 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
                         <p className='flex items-center gap-1 text-red-500'>5 <AiFillStar /></p>
                     </div>
                     <div className='image'>
@@ -32,7 +32,7 @@ const Items = () => {
                     </div>
                 </div>
                 <div className='pdt-card m-6 w-72 shadow-xl py-4 px-2 flex flex-col justify-center items-center space-y-4 bg-yellow-50 rounded-md hover:scale-110 hover:bg-gray-200 duration-200 ease-in-out cursor-pointer'>
-                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-4 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
+                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-6 h-8 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
                         <p className='flex items-center gap-1 text-red-500'>5 <AiFillStar /></p>
                     </div>
                     <div className='image'>
@@ -46,7 +46,7 @@ const Items = () => {
                     </div>
                 </div>
                 <div className='pdt-card m-6 w-72 shadow-xl px-2 py-4 flex flex-col justify-center items-center space-y-4 bg-yellow-50 rounded-md hover:scale-110 hover:bg-gray-200 duration-200 ease-in-out cursor-pointer'>
-                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-4 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
+                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-6 h-8 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
                         <p className='flex items-center gap-1 text-red-500'>5 <AiFillStar /></p>
                     </div>
                     <div className='image'>
@@ -60,7 +60,7 @@ const Items = () => {
                     </div>
                 </div>
                 <div className='pdt-card m-6 w-72 shadow-xl px-2 py-4 flex flex-col justify-center items-center space-y-4 bg-yellow-50 rounded-md hover:scale-110 hover:bg-gray-200 duration-200 ease-in-out cursor-pointer'>
-                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-4 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
+                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-6 h-8 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
                         <p className='flex items-center gap-1 text-red-500'>5 <AiFillStar /></p>
                     </div>
                     <div className='image'>
@@ -74,7 +74,7 @@ const Items = () => {
                     </div>
                 </div>
                 <div className='pdt-card m-6 w-72 shadow-xl px-2 py-4 flex flex-col justify-center items-center space-y-4 bg-yellow-50 rounded-md hover:scale-110 hover:bg-gray-200 duration-200 ease-in-out cursor-pointer'>
-                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-4 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
+                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-6 h-8 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
                         <p className='flex items-center gap-1 text-red-500'>5 <AiFillStar /></p>
                     </div>
                     <div className='image'>
@@ -88,7 +88,7 @@ const Items = () => {
                     </div>
                 </div>
                 <div className='pdt-card m-6 w-72 shadow-xl px-2 py-4 flex flex-col justify-center items-center space-y-4 bg-yellow-50 rounded-md hover:scale-110 hover:bg-gray-200 duration-200 ease-in-out cursor-pointer'>
-                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-4 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
+                    <div className='rating bg-orange-100 px-2 py-1 rounded-md relative -top-6 h-8 -right-[122px] vsmsbs:-right-20 vsmm:-right-24 smm:text-sm'>
                         <p className='flex items-center gap-1 text-red-500'>5 <AiFillStar /></p>
                     </div>
                     <div className='image'>

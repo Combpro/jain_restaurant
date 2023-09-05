@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import React from 'react'
 import img1 from '../Assets/t1.jpg'
 import img2 from '../Assets/t2.jpg'
@@ -35,9 +35,11 @@ const Response = () => {
 
   const [currentItemIndex, setCurrentItemIndex] = useState(0)
 
-setInterval(function () {
+useEffect(() => {
+  setInterval(function () {
     setCurrentItemIndex((currentItemIndex + 1) % testimonials.length);
-}, 10000);
+}, 5000);
+}, [currentItemIndex])
 
 
   return (
