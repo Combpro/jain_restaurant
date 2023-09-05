@@ -3,6 +3,7 @@ import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import '../styles/login.css'
+import Footer from './Footer';
 
 
 
@@ -29,7 +30,7 @@ const onFinishHandler =async (values)=>{
 }
 
   return (
-
+<>
     <div className="cont">
 
    
@@ -37,7 +38,7 @@ const onFinishHandler =async (values)=>{
          <Form
         layout="vertical"
         onFinish={onFinishHandler}
-        className="register-form"
+        className="register-form rounded-lg"
       >
         <div className="heading">
 
@@ -48,18 +49,20 @@ const onFinishHandler =async (values)=>{
           <Input type="email" required />
         </Form.Item>
         <Form.Item label="Password" name="password">
-          <Input type="password" required />
+          <Input type="password" required className='text-gray-200'/>
         </Form.Item>
-        <button className="btn btn-dark" type="submit">
+        <button className="btn btn-outline-light" type="submit">
           Login
         </button>
-        <Link to="/register" className="m-2 text-dark bg-light rounded p-2">
+        <Link to="/register" className="m-2 text-light rounded p-2">
           Not a user? Register here
         </Link>
       
       </Form>
     </div>
     </div>
+    <Footer />
+</>
   )
 }
 

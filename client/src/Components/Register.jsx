@@ -4,6 +4,7 @@ import { Form, Input, message } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/register.css'
+import Footer from "./Footer";
 
 const Register =()=>{
     const navigate = useNavigate();
@@ -30,11 +31,11 @@ const Register =()=>{
         <div className="cont">
 
        
-          <div className="form-container ">
+          <div className="form-container rounded-md ">
             <Form
               layout="vertical"
               onFinish={onFinishHandler}
-              className="register-form"
+              className="register-form rounded-lg"
             ><div className="heading">
 
               <h3 className="text-center font-weight-bold text-white">Register Form</h3>
@@ -42,21 +43,23 @@ const Register =()=>{
               <Form.Item label="Name" name="name">
                 <Input type="text" required />
               </Form.Item>
-              <Form.Item label="Email" name="email">
+              <Form.Item label="Email" name="email" className="text-gray-200">
                 <Input type="email" required />
               </Form.Item>
               <Form.Item label="Password" name="password">
                 <Input type="password" required />
               </Form.Item>
-              <Link to="/login" className="m-2 text-dark rounded bg-light p-2">
+              
+              <Link to="/login" className="mr-2 text-light rounded pb-6">
                 Already user? login here
               </Link>
-              <button className="btn btn-dark" type="submit">
+              <button className="btn btn-outline-light  "  type="submit">
                 Register
               </button>
             </Form>
           </div>
           </div>
+          <Footer />
         </>
       );
 
