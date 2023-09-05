@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../Jain Jalebi Logo.png';
 import { TiLocation } from 'react-icons/ti';
 import { BsTelephoneFill } from 'react-icons/bs';
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -44,7 +45,9 @@ const Footer = () => {
                 <div className='help-section w-1/3 smm:w-full flex flex-col items-center space-y-4 smm:text-sm'>
                     <h2 className='uppercase text-xl font-bold text-center h-12 smm:h-8'>Help</h2>
                     <ul className='flex flex-col items-center h-[20vh] smm:h-auto cursor-pointer space-y-2 p-0'>
-                        <li>FAQ</li>
+
+                        <Link to='/faq'><li>FAQ</li></Link>
+
                         <li>My Profile</li>
                     </ul>
                 </div>

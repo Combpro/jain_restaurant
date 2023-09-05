@@ -6,6 +6,7 @@ import Login from './Components/Login';
 import Register from './Components/Register';
 import Prod from './Components/ProductCard'
 import CartPage from "./Components/cartPage";
+import Faq from './Components/Faq';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path='/register' element ={<Register />} />
         <Route exact path="/prod" element={<Prod />} />
         <Route exact path="/Cart" element={<CartPage />} />
+        <Route exact path = "/faq" element={<Faq/>} />
       </Routes>
     </Router>
   );

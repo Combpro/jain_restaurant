@@ -8,7 +8,7 @@ import logo from '../Jain Jalebi Logo.png'
 import { useNavigate ,Link} from 'react-router-dom';
 import {message} from 'antd'
 import { useDispatch, useSelector } from "react-redux";
-
+import {Badge} from "antd"
 import { getCartTotal } from "../features/cartSlice";
 
 
@@ -89,11 +89,16 @@ const Navbar = () => {
                         <input className={`outline-none p-1 w-40 smm:w-24 rounded-md h-7 ${search ? 'visible' : 'hidden'} outline-orange-200 text-sm z-50`} type='text' name='search' placeholder='Search' />
                         {!search ? <GoSearch className='font-medium' onClick={() => setSearch(!search)} /> : <VscSearchStop className='font-medium' onClick={() => setSearch(!search)} />}
                     </div>
-                    <Link to="/Cart"><div className='cart smm:p-1'>
-                    {totalQuantity}
-                        <BsCart3 className='font-medium' />
+                    <div className='cart smm:p-1 flex'>
+                    <Badge count ={totalQuantity}
+                    onClick={() => {
+                        navigate("/Cart");
+                      }}
+                    >
+                    <BsCart3 className='font-medium text-xl' />   
+                    </Badge>
                     </div>
-                    </Link>       
+                       
                 </div>
             </div>
             {
