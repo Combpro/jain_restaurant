@@ -63,7 +63,7 @@ const TestiMonials = () => {
     return (
         <section id="testimonial" className="testimonials pt-70 pb-70">
             <div className="container mt-5">
-                <h4 className="font-bold text-4xl font-serif text-center">TESTIMONIALS</h4>
+                <h4 className="font-bold smm:text-2xl text-4xl font-serif text-center">TESTIMONIALS</h4>
                 <div className="text-center ">
                     <h3 className="sectionTitle font-mono  pt-2">What Our Clients are Saying?</h3>
                 </div>

@@ -12,14 +12,25 @@ const productSchema = mongoose.Schema ({
         unique:true
     },
     productDescription:{
-        type:String,
-        required:true
+        type:String
     },   
     productPrice:{
         type:Number,
         required:true
     },
     productCategory:{
+        type:String,
+        required:true
+    },
+    productImage:{
+        type:String,
+        default:'https://banner2.cleanpng.com/20180618/ru/kisspng-indian-cuisine-jalebi-kachori-samosa-vegetarian-cu-5b27bcdf929538.5759893615293309116004.jpg'
+    },
+    productQuantity:{
+        type:Number,
+        required: true
+    },
+    productQuantityPiece:{
         type:String,
         required:true
     },
