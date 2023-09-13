@@ -12,12 +12,12 @@ const navigate = useNavigate();
 
 const onFinishHandler =async (values)=>{
     try{
-        const res = await axios.post("http://localhost:5000/api/user/login", values);
+        const res = await axios.post("http://localhost:5000/api/admin/login", values);
         // window.location.reload(); 
         if (res.data.success) {
-            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("authToken", res.data.token);
             message.success("Login Successfully");
-            navigate("/");
+            navigate("/admin");
           }
            else {
             message.error(res.data.message);
@@ -42,21 +42,19 @@ const onFinishHandler =async (values)=>{
       >
         <div className="heading">
 
-        <h3 className="text-center text-white font-weight-bold">Login Form</h3>
+        <h3 className="text-center text-white font-weight-bold">Admin Login Form</h3>
         </div>
 
-        <Form.Item label={<label style={{ color: "white" }}>Email</label>} name="email">
+        <Form.Item  label={<label style={{ color: "white" }}>Email</label>} name="email">
           <Input type="email" required />
         </Form.Item>
         <Form.Item label={<label style={{ color: "white" }}>Password</label>} name="password">
-          <Input type="password" required/>
+          <Input type="password" required />
         </Form.Item>
-        <button className="btn btn-outline-light" type="submit">
+        <button className="btn btn-outline-light " type="submit">
           Login
         </button>
-        <Link to="/register" className="m-2 text-light rounded p-2">
-          Not a user? Register here
-        </Link>
+        
       
       </Form>
     </div>
