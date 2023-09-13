@@ -13,12 +13,12 @@ router.post('/login', async (req, res) => {
 
         let admin = await Admin.findOne({email});
         if(!admin) {
-            return res.status(401).json('Please! Try again after sometime');
+            return res.status(401).json({message :'Please! Try again after sometime'});
         }
 
         const passwordCompare = await bcrypt.compare(password, admin.password);
         if (!passwordCompare) {
-            return res.status(401).json("Please try to login with correct credentials");
+            return res.status(401).json({message: "Please try to login with correct credentials"});
         }
 
         const data = {
@@ -28,11 +28,11 @@ router.post('/login', async (req, res) => {
         }
 
         const authToken = jwt.sign(data, JWT_SECRET_ADMIN);
-        res.json(authToken);
+        res.json({success : "true",authToken});
     }
     catch (error) {
         console.log(error.message);
-        res.status(500).send("Internal Server Error");
+        res.status(500).send({message: "Internal Server Error"});
     }
 })
 

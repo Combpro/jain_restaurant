@@ -1,4 +1,5 @@
 const userModel = require('../database/models/userModel');
+const adminModel = require('../database/models/adminModal')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs')
 // for registration
@@ -76,4 +77,29 @@ const loginController = async (req, res) => {
 //     }
 //   };
 
-module.exports ={registerController, loginController}
+
+const adminLoginController = async (req, res) => {
+  try {
+    const admin = await adminModel.findOne({ email: req.body.email });
+    if (!user) {
+      return res
+        .status(200)
+        .send({ message: "user not found", success: false });
+    }
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) {
+      return res
+        .status(200)
+        .send({ message: "Invlid EMail or Password", success: false });
+    }
+    const adminToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    res.status(200).send({ message: "Login Success", success: true, adminToken });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: `Error in Login CTRL ${error.message}` });
+  }
+};
+
+module.exports ={registerController, loginController, adminLoginController}

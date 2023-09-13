@@ -4,7 +4,7 @@ const Admin = require('../database/models/adminModal');
 const adminAuthentication = async (req, res, next) => {
     try {
         const token = req.header('auth-token');
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_ADMIN_SECRET);
         if (!token) {
             res.status(401).send({ error: "Please authenticate using a valid token" })
         }
