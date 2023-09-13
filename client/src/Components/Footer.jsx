@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 const Footer = () => {
     return (
         <>
-            <div className='footer flex p-2 smm:flex-wrap smm:flex-col smm:space-y-2'>
+            <div className='footer flex p-2 smm:flex-wrap smm:flex-col smm:space-y-2 bg-gray-200'>
                 <div className='footer-timings w-1/3 smm:w-full flex flex-col justify-center items-center space-y-4'>
                     <div className='image h-12 smm:h-8'>
                         <img src={logo} className='w-40 h-10 rounded-md' />
@@ -52,7 +52,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
-            <div className='copyrights bg-orange-500 flex justify-center items-center h-14 mt-2'>
+            <div className='copyrights bg-orange-500 flex justify-center items-center h-14 pt-2'>
                 <h5 className='font-semiold text-white smm:text-sm'>&copy; 2032 All Rights Reserved By JAIN JALEBI</h5>
             </div>
         </>
