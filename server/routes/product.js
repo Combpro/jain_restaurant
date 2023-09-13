@@ -2,6 +2,7 @@ const express = require('express');
 const Product = require('../database/models/productModal');
 const router = express.Router();
 const adminAuthentication = require('../middlewares/adminAuthentication');
+// const userAuthentication = require('../middlewares/userAuthentication');
 
 router.get('/getProducts', async (req, res) => {
     const products = await Product.find({});
@@ -21,7 +22,7 @@ router.get('/getProduct/:id', async (req, res) => {
 
 router.post("/addProduct", adminAuthentication, async (req, res) => {
     try {
-        const {productName, productPrice, productDescription, productCategory} = req.body;
+        const {productName, productPrice, productDescription, productCategory, productImage, productQuantity, productQuantityPiece} = req.body;
 
         let product = await Product.findOne({productName});
         if(product) {
@@ -29,7 +30,7 @@ router.post("/addProduct", adminAuthentication, async (req, res) => {
         }
 
         product = await Product.create({
-            admin: admin.id, productName, productPrice, productDescription, productCategory
+            admin: admin.id, productName, productPrice, productDescription, productCategory, productImage, productQuantity, productQuantityPiece
         })
 
         const products = await Product.find({});
@@ -58,6 +59,9 @@ router.patch('/updateProduct/:id',adminAuthentication, async(req, res) => {
         }
         if(productCategory) {
             newProduct.productCategory = productCategory;
+        }
+        if(productImage) {
+            newProduct.productImage = productImage;
         }
 
         if (product.admin.toString() !== req.admin.id) {
