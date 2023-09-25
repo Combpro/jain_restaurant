@@ -1,5 +1,6 @@
 const express = require('express');
 const Product = require('../database/models/productModal');
+const Category = require('../database/models/categoryModal');
 const router = express.Router();
 const adminAuthentication = require('../middlewares/adminAuthentication');
 // const userAuthentication = require('../middlewares/userAuthentication');
@@ -30,8 +31,21 @@ router.post("/addProduct", adminAuthentication, async (req, res) => {
         }
 
         product = await Product.create({
-            admin: admin.id, productName, productPrice, productDescription, productCategory, productImage, productQuantity, productQuantityPiece
+            admin: req.admin._id, productName, productPrice, productDescription, productCategory, productImage, productQuantity, productQuantityPiece
         })
+
+        const catName = productCategory;
+        const findCategory = await Category.findOne({ name: catName });
+
+        if (findCategory) {
+            findCategory.productIds.push(product._id);
+            const updatedCategory = await Category.findByIdAndUpdate(findCategory._id, { $set: { productIds: findCategory.productIds } }, { new: true })
+        }
+        else {
+            const newCategory = await Category.create({
+                name: catName, productIds: [product._id]
+            })
+        }
 
         const products = await Product.find({});
         res.json({'Message' : "Product/Food Items has been added", products});
@@ -47,10 +61,13 @@ router.patch('/updateProduct/:id',adminAuthentication, async(req, res) => {
         let product = await Product.findById(req.params.id);
         if(!product)  return res.status(404).send("Product is not found!");
 
-        const {productDescription, productCategory, productPrice} = req.body;
-
+        const {productName, productDescription, productCategory, productPrice, productImage, productQuantity, productQuantityPiece} = req.body;
+        
         const newProduct = {};
 
+        if(productName) {
+            newProduct.productName = productName;
+        }
         if(productDescription) {
             newProduct.productDescription = productDescription;
         }
@@ -62,6 +79,12 @@ router.patch('/updateProduct/:id',adminAuthentication, async(req, res) => {
         }
         if(productImage) {
             newProduct.productImage = productImage;
+        }
+        if(productQuantity) {
+            newProduct.productQuantity = productQuantity;
+        }
+        if(productQuantityPiece) {
+            newProduct.productQuantityPiece = productQuantityPiece;
         }
 
         if (product.admin.toString() !== req.admin.id) {

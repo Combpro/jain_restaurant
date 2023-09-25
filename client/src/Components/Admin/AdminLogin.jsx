@@ -2,8 +2,8 @@ import React from 'react'
 import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import '../styles/login.css'
-import Footer from './Footer';
+import '../../styles/login.css'
+import Footer from '../Footer';
 
 
 
@@ -15,7 +15,7 @@ const onFinishHandler =async (values)=>{
         const res = await axios.post("http://localhost:5000/api/admin/login", values);
         // window.location.reload(); 
         if (res.data.success) {
-            localStorage.setItem("authToken", res.data.token);
+            localStorage.setItem("token", res.data.authToken);
             message.success("Login Successfully");
             navigate("/admin");
           }

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddProductPage = () => {
+    const {id} = useParams();
+    const [pdt, setPdt] = useState("");
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
@@ -13,6 +16,25 @@ const AddProductPage = () => {
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
 
+    useEffect(() => {
+        const fetchDetails = async () => {
+            const response = await fetch(`http://localhost:5000/product/getProduct/${id}`);
+            const data = await response.json();
+
+            setName(data.productName);
+            setDescription(data.productDescription);
+            setPrice(data.productPrice);
+            setCategory(data.productCategory);
+            setQty(data.productQuantity);
+            setQtyReq(data.productQuantityPiece);
+            setUrl(data.productImage);
+        }
+
+        fetchDetails();
+    }, [id]);
+
+    
+
     const options = {
         position: "top-right",
         autoClose: 1000,
@@ -20,6 +42,8 @@ const AddProductPage = () => {
         draggable: false,
         theme: 'dark'
     };
+
+    
 
     const handleValidation = () => {
         if (name === '') {
@@ -50,20 +74,14 @@ const AddProductPage = () => {
             toast.error('Quantity Piece/Kg is required', options);
             return false;
         }
-        if (image === '') {
-            toast.error('Image is required', options);
-            return false;
-        }
 
         return true;
     }
 
-    let navigate = useNavigate();
-
     useEffect(() => {
         if(url){
             const fetchDetails = async () => {
-                const response = await fetch("http://localhost:5000/product/addProduct", {
+                const response = await fetch(`http://localhost:5000/product/updateProduct/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -74,15 +92,13 @@ const AddProductPage = () => {
                 
                 const data = await response.json();
                 if(data){
-                    toast.success("Post has been created");
+                    toast.success("Post has been Updated Successfully");
                     setName('');
                     setDescription('');
                     setCategory('');
                     setImage('');
                     setPrice('');
                     setQty('');
-                    setQtyReq('');
-                    navigate('/admin');
                 }
                 else {
                     toast.error("Please! Try again after sometime");
@@ -120,16 +136,46 @@ const AddProductPage = () => {
     const postDetails = async (e) => {
         e.preventDefault();
         if(handleValidation()){
-            const data = new FormData();
-            data.append("file", image);
-            data.append("upload_preset", "jain-jalebi");
-            data.append("cloud_name", "pinstagramcn");
-            const response = await fetch(process.env.REACT_APP_CLOUD,{
-                method: 'POST',
-                body: data
-            })
-            const res = await response.json();
-            setUrl(res.secure_url);
+            if(image !== '') {
+                const data = new FormData();
+                data.append("file", image);
+                data.append("upload_preset", "jain-jalebi");
+                data.append("cloud_name", "pinstagramcn");
+                const response = await fetch(process.env.REACT_APP_CLOUD,{
+                    method: 'POST',
+                    body: data
+                })
+                const res = await response.json();
+                setUrl(res.secure_url);
+            }
+            else {
+                const fetchDetails = async () => {
+                    const response = await fetch(`http://localhost:5000/product/updateProduct/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'auth-token': localStorage.getItem('token')
+                    },
+                    body: JSON.stringify({productName:name, productDescription: description, productPrice: price, productCategory: category,  productImage: url, productQuantity: qty, productQuantityPiece: qtyReq})
+                    })
+                    
+                    const data = await response.json();
+                    if(data){
+                        toast.success("Post has been Updated Successfully");
+                        setName('');
+                        setDescription('');
+                        setCategory('');
+                        setImage('');
+                        setPrice('');
+                        setQty('');
+                    }
+                    else {
+                        toast.error("Please! Try again after sometime");
+                    }
+                }
+
+                fetchDetails();
+            }
         }
     }
 
