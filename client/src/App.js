@@ -8,9 +8,9 @@ import Prod from './Components/ProductCard'
 import CartPage from "./Components/cartPage";
 import Faq from './Components/Faq';
 
-import AdminLogin from './Components/AdminLogin'
-import Admin from './Components/Admin';
-
+import AdminLogin from './Components/Admin/AdminLogin'
+import Admin from './Components/Admin/Admin';
+import EditProductPage from './Components/Admin/EditProductPage';
 import AddProductPage from './Components/Admin/AddProductPage';
 
 
@@ -21,6 +21,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/adminlogin' element ={<AdminLogin />} />
+        <Route exact path='/editProduct/:id' element ={<EditProductPage />} />
         <Route exact path='/admin' element={<Admin />} />
         <Route exact path='/login' element ={<Login />} />
         <Route exact path='/register' element ={<Register />} />

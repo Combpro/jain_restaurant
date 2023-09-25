@@ -9,8 +9,7 @@ const adminAuthentication = async (req, res, next) => {
             res.status(401).send({ error: "Please authenticate using a valid token" })
         }
 
-        const admin = await Admin.findById(decoded.user.id);
-
+        const admin = await Admin.findById(decoded.admin.id);
         if (!admin) {
             res.status(401).send({ result: "Please! Try again after sometime" })
             console.log("Please! Try again after sometime");
