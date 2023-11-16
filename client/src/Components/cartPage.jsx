@@ -38,7 +38,7 @@ const CartPage = () => {
                           data-mdb-ripple-color="light"
                         >
                           <img
-                            src={data.img}
+                            src={data.productImage}
                             className="w-100"
                             alt="Blue Jeans Jacket"
                           />
@@ -47,7 +47,7 @@ const CartPage = () => {
 
                       <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                         <p>
-                          <strong>{data.title}</strong>
+                          <strong>{data.productName}</strong>
                         </p>
 
                         <button
@@ -55,7 +55,7 @@ const CartPage = () => {
                           className="btn btn-primary btn-sm me-1 mb-2"
                           data-mdb-toggle="tooltip"
                           title="Remove item"
-                          onClick={() => dispatch(removeItem(data.id))}
+                          onClick={() => dispatch(removeItem(data.productName))}
                         >
                           <i className="fas fa-trash"></i>
                         </button>
@@ -68,8 +68,9 @@ const CartPage = () => {
                         >
                           <button
                             className="btn btn-primary px-3 me-2"
+                            disabled={data.productQuantity<=0?true:false}
                             onClick={() =>
-                              dispatch(decreaseItemQuantity(data.id))
+                              dispatch(decreaseItemQuantity(data.productName))
                             }
                           >
                             <i className="fas fa-minus"></i>
@@ -80,7 +81,7 @@ const CartPage = () => {
                               id="form1"
                               min="0"
                               name="quantity"
-                              value={data.quantity>=0?data.quantity:0}
+                              value={data.productQuantity>=0?data.productQuantity:0}
                               type="number"
                               className="form-control"
                               onChange={() => null}
@@ -93,7 +94,7 @@ const CartPage = () => {
                           <button
                             className="btn btn-primary px-3 ms-2"
                             onClick={() =>
-                              dispatch(increaseItemQuantity(data.id))
+                              dispatch(increaseItemQuantity(data.productName))
                             }
                           >
                             <i className="fas fa-plus"></i>
@@ -101,7 +102,7 @@ const CartPage = () => {
                         </div>
 
                         <p className="text-start text-md-center">
-                          <strong>{data.price}</strong>
+                          <strong>{data.productPrice}</strong>
                         </p>
                       </div>
                       <hr className="my-4" />
@@ -134,7 +135,7 @@ const CartPage = () => {
 
                   <button
                     type="button"
-                    className="btn btn-primary btn-lg btn-block"
+                    className="btn btn-warning btn-lg btn-block"
                   >
                     Go to checkout
                   </button>

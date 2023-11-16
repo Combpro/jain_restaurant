@@ -7,6 +7,25 @@
   pointer-events: none;
 }
 
+
+.about-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -24,8 +43,11 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* .App-link {
+  color: #e0e9eb;
+} */
+a{
+  color: black;
 }
 
 @keyframes App-logo-spin {

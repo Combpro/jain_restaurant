@@ -12,8 +12,8 @@ import { ScrollToTop } from 'react-simple-scroll-up';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ScrollToTop className='z-20' symbol='👆' />
     <Provider store={store}>
+    <ScrollToTop className='z-20' symbol='⬆️' />
     <App />
     </Provider>
   </React.StrictMode>

@@ -48,7 +48,6 @@ const Footer = () => {
 
                         <Link to='/faq' className='text-black'><li>FAQ</li></Link>
 
-                        <li>My Profile</li>
                     </ul>
                 </div>
             </div>
