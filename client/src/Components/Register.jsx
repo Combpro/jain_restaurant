@@ -40,15 +40,15 @@ const Register =()=>{
 
               <h3 className="text-center font-weight-bold text-white">Register Form</h3>
             </div>
-              <Form.Item label="Name" name="name">
-                <Input type="text" required />
-              </Form.Item>
-              <Form.Item label="Email" name="email" className="text-gray-200">
-                <Input type="email" required />
-              </Form.Item>
-              <Form.Item label="Password" name="password">
-                <Input type="password" required />
-              </Form.Item>
+            <Form.Item label={<label style={{ color: "white" }}>Name</label>} name="name">
+          <Input type="name" required />
+        </Form.Item>
+              <Form.Item label={<label style={{ color: "white" }}>Email</label>} name="email">
+          <Input type="email" required />
+        </Form.Item>  
+        <Form.Item label={<label style={{ color: "white" }}>Password</label>} name="email">
+          <Input type="password" required />
+        </Form.Item>
               
               <Link to="/login" className="mr-2 text-light rounded pb-6">
                 Already user? login here

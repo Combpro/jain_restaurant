@@ -74,8 +74,8 @@ const Navbar = () => {
                 </div>
                 <div className='w-4/5 justify-end mdm:w-[60%]'>
                     <ul className='flex justify-end gap-8 smm:gap-2 items-center cursor-pointer ease-in-out font-medium text-base mb-0 pl-0'>
-                        <li className='hover:text-orange-500 mdm:hidden pl-0'><Link to='/'>Home</Link></li>
-                        <li className='hover:text-orange-500 mdm:hidden'>About</li>
+                        <li className='hover:text-orange-500 mdm:hidden pl-0' onClick={()=>{navigate('/')}} >Home</li>
+                        <li className='hover:text-orange-500 mdm:hidden' onClick={()=>{navigate('/about')}} >About</li>
                         <li className=' mdm:hidden' onClick={() => setShowCategory(!showCategory)}>
                             <h5 className='hover:text-orange-500 text-base m-0 flex items-center'>Categories <span><svg
                                 width="6"
@@ -99,7 +99,7 @@ const Navbar = () => {
                         <li className={`hover:text-orange-500 mdm:hidden ${loggedIN ? 'visible' : 'hidden'}`} onClick={() => { navigate("/register") }}>Sign Up</li>
                         <li className={`hover:text-orange-500 mdm:hidden ${loggedIN ? 'visible' : 'hidden'}`} onClick={() => { navigate("/login") }}>Sign In</li>
                         <li className={`hover:text-orange-500  mdm:hidden ${loggedIN ? 'hidden' : 'visible'}`} onClick={handleLogout}>Log Out</li>
-                        <li className='hover:text-orange-500 mdm:hidden'>Contact</li>
+                        <li className='hover:text-orange-500 mdm:hidden' onClick={()=>{navigate('/contact')}}>Contact</li>
                         <li className='icons flex items-center justify-end space-x-4 smm:space-x-2'>
                             <input className={`outline-none p-1 w-32 smm:w-24 rounded-md h-7 ${search ? 'visible' : 'hidden'} outline-orange-200 text-sm z-50`} type='text' name='search' placeholder='Search' onChange={(e) => setSearchValue(e.target.value)} />
 
@@ -138,8 +138,8 @@ const Navbar = () => {
             {
                 isNavbar ? <div className={`h-[90%] bg-yellow-400 w-[60%]  absolute animate-fade-in z-50`}>
                     <ul className='flex flex-col items-center space-y-8 cursor-pointer ease-in-out font-medium text-xl smm:text-base text-white p-2 pt-6 z-50'>
-                        <li className='hover:text-orange-500'>Home</li>
-                        <li className='hover:text-orange-500'>About</li>
+                        <li className='hover:text-orange-500' onClick={()=>{navigate('/')}}>Home</li>
+                        <li className='hover:text-orange-500' onClick={()=>{navigate('/about')}} >About</li>
                         <li>
                             <div className='' onClick={() => setShowCategory(!showCategory)}>
                                 <h5 className='hover:text-orange-500 text-xl smm:text-base flex items-center'>
@@ -170,7 +170,7 @@ const Navbar = () => {
                         <li className={`hover:text-orange-500 ${loggedIN ? 'visible' : 'hidden'}`} onClick={() => { navigate("/login") }}>Sign In</li>
                         <li className={`hover:text-orange-500 ${loggedIN ? 'hidden' : 'visible'}`} onClick={handleLogout}>Log Out</li>
 
-                        <li className='hover:text-orange-500'>Contact</li>
+                        <li className='hover:text-orange-500' onClick={()=>{navigate('/contact')}}>Contact</li>
                     </ul>
                 </div> : ""
             }

@@ -3,7 +3,6 @@ import productData from "../productData";
 
 const initialState = {
   cart: [],
-  items: productData,
   totalQuantity: 0,
   totalPrice: 0,
 };
@@ -13,9 +12,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      let find = state.cart.findIndex((item) => item.id === action.payload.id);
+      let find = state.cart.findIndex((item) => item.productName === action.payload.productName);
       if (find >= 0) {
-        state.cart[find].quantity += 1;
+        state.cart[find].productQuantity += 1;
       } else {
         state.cart.push(action.payload);
       }
@@ -26,11 +25,11 @@ const cartSlice = createSlice({
         (cartTotal, cartItem) => {
           console.log("carttotal", cartTotal);
           console.log("cartitem", cartItem);
-          const { price, quantity } = cartItem;
-          console.log(price, quantity);
-          const itemTotal = price * quantity;
+          const { productPrice, productQuantity } = cartItem;
+          console.log(productPrice, productQuantity);
+          const itemTotal = productPrice * productQuantity;
           cartTotal.totalPrice += itemTotal;
-          cartTotal.totalQuantity += quantity;
+          cartTotal.totalQuantity += productQuantity;
           return cartTotal;
         },
         {
@@ -43,20 +42,20 @@ const cartSlice = createSlice({
     },
 
     removeItem: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload);
+      state.cart = state.cart.filter((item) => item.productName !== action.payload);
     },
     increaseItemQuantity: (state, action) => {
       state.cart = state.cart.map((item) => {
-        if (item.id === action.payload) {
-          return { ...item, quantity: item.quantity + 1 };
+        if (item.productName === action.payload) {
+          return { ...item, productQuantity: item.productQuantity + 1 };
         }
         return item;
       });
     },
     decreaseItemQuantity: (state, action) => {
       state.cart = state.cart.map((item) => {
-        if (item.id === action.payload) {
-          return { ...item, quantity: item.quantity - 1 };
+        if (item.productName === action.payload) {
+          return { ...item, productQuantity: item.productQuantity - 1 };
         }
         return item;
       });
